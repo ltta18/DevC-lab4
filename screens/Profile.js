@@ -1,25 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+
+import { ProfileStyles as styles } from '../styles/styles';
+import { 
+  SafeAreaView, 
+  View, 
+  Text 
+} from 'react-native';
 
 
 export default function Profile() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        
+    <SafeAreaView style={styles.safeAreaView}>
+      <View style={styles.container}>
+        <Text>Profile</Text>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
