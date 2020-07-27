@@ -1,5 +1,6 @@
 import React from 'react';
 import NumberFormat from 'react-number-format';
+
 import { RecordViewStyles as styles } from '../styles/styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';

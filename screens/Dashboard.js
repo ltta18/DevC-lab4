@@ -18,6 +18,25 @@ import {
 } from '../data/data';
 
 
+const accountItem = [
+  {
+    title: 'Bank Account',
+    backgroundColor: '#E437BC',
+    value: data.account_information.bank.total,
+  },
+  {
+    title: 'Credit Card',
+    backgroundColor: '#EFA75A',
+    value: data.account_information.credit.total,
+  },
+  {
+    title: 'Cash',
+    backgroundColor: '#23E3D6',
+    value: data.account_information.cash.total,
+  },
+]
+
+
 export default function Dashboard() {
   const [ modalVisible, setModalVisible ] = useState(false);
 
@@ -35,36 +54,22 @@ export default function Dashboard() {
         <View style={styles.accountView}>
           <Text style={styles.titleName}>List of Account</Text>
           <View style={styles.cardView}>
-            <View style={[styles.card, { backgroundColor: '#E437BC' }]}>
-              <Text style={styles.cardName}>Bank account</Text>
-              <NumberFormat 
-                value={data.account_information.bank.total}
-                displayType={'text'} 
-                thousandSeparator={true} 
-                prefix={'$'}
-                renderText={value => <Text style={styles.cardValue}>{value}</Text>} 
-              />
-            </View>
-            <View style={[styles.card, { backgroundColor: '#EFA75A' }]}>
-              <Text style={styles.cardName}>Credit card</Text>
-              <NumberFormat 
-                value={data.account_information.credit.total}
-                displayType={'text'} 
-                thousandSeparator={true} 
-                prefix={'$'}
-                renderText={value => <Text style={styles.cardValue}>{value}</Text>} 
-              />
-            </View>
-            <View style={[styles.card, { backgroundColor: '#23E3D6' }]}>
-              <Text style={styles.cardName}>Cash</Text>
-              <NumberFormat 
-                value={data.account_information.cash.total}
-                displayType={'text'} 
-                thousandSeparator={true} 
-                prefix={'$'}
-                renderText={value => <Text style={styles.cardValue}>{value}</Text>} 
-              />
-            </View>
+            {accountItem.map((item, i) => {
+              return (
+                <View 
+                  key={`accountItem${i}`}
+                  style={[styles.card, { backgroundColor: item.backgroundColor }]}>
+                  <Text style={styles.cardName}>{item.title}</Text>
+                  <NumberFormat 
+                    value={item.value}
+                    displayType={'text'} 
+                    thousandSeparator={true} 
+                    prefix={'$'}
+                    renderText={value => <Text style={styles.cardValue}>{value}</Text>} 
+                  />
+                </View>
+              )
+            })}
           </View>
           <View style={styles.balance}>
             <NumberFormat 
